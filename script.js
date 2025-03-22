@@ -43,3 +43,18 @@ buttonDelete.addEventListener("click", () => {
   const lastElement = document.querySelector("li:last-child");
   lastElement.remove();
 });
+
+
+// let today = new Date();
+// let day = String(today.getDate()).padStart(2, '0');
+// let month = String(today.getMonth() + 1).padStart(2, '0');
+// let year = today.getFullYear();
+// let hours = String(today.getHours()).padStart(2, '0');
+// let minutes = String(today.getMinutes()).padStart(2, '0');
+// let currentDate = `${day}.${month}.${year} ${hours}:${minutes}`;
+
+var now = new Date();
+var datetimeF = now.toLocaleString();
+document.getElementById("datetime").innerHTML = datetimeF;
+
+
