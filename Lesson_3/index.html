@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Урок "Управление html содержимым из js"</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <h1>студенты</h1>
+    <ul id="list">
+      <!-- <li><span>Глеб</span><button>удалить</button></li>
+      <li><span>Иван</span><button>удалить</button></li>
+      <li><span>Люси</span><button>удалить</button></li> -->
+    </ul>
+
+    <div>
+      <h3>Форма добавления</h3>
+      Имя:
+      <input type="text" id="field" />
+      <br /><br />
+      <button type="button" id="add">Добавить</button>
+    </div>
+
+    <script>
+      const button = document.getElementById("add");
+      const list = document.getElementById("list");
+      const removeButton = document.getElementById("remove");
+      const input = document.getElementById("field");
+
+      const studehts = [{ name: "Глеб" }, { name: "Иван" }, { name: "Люси" }];
+
+      const renderStudents = () => {
+        const studehtsHtml = studehts
+          .map((student) => {
+            return `<li><span>${student.name} </span><button>удалить</button></li>`;
+          })
+          .join("");
+
+        list.innerHTML = studehtsHtml;
+      };
+
+      renderStudents();
+
+      const studehtsElements = document.querySelectorAll("li");
+      for (const studehtsElement of studehtsElements) {
+        studehtsElement.addEventListener("click", () => {
+          console.log(click);
+        });
+      }
+
+      button.addEventListener("click", () => {
+        input.classList.remove("error");
+
+        if (input.value === "") {
+          input.classList.add("error");
+          return;
+        }
+
+        studehts.push({ name: input.value });
+
+        renderStudents();
+
+        // const oldHtml = list.innerHTML;
+        // list.innerHTML =
+        //   oldHtml +
+        //   `<li><span>${input.value}</span><button>удалить</button></li>`;
+        input.value = "";
+      });
+    </script>
+  </body>
+</html>
