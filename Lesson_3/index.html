@@ -27,26 +27,34 @@
       const removeButton = document.getElementById("remove");
       const input = document.getElementById("field");
 
-      const studehts = [{ name: "Глеб" }, { name: "Иван" }, { name: "Люси" }];
+      const students = [
+        { name: "Глеб" },
+        { name: "Иван" },
+        { name: "Люси" },
+        { name: "Анна" },
+      ];
+
+      const initClickStudents = () => {
+        const studentsElements = document.querySelectorAll("li");
+        for (const studentElement of studentsElements) {
+          studentElement.addEventListener("click", () => {
+            console.log("click");
+          });
+        }
+      };
 
       const renderStudents = () => {
-        const studehtsHtml = studehts
+        const studentsHtml = students
           .map((student) => {
             return `<li><span>${student.name} </span><button>удалить</button></li>`;
           })
           .join("");
 
-        list.innerHTML = studehtsHtml;
+        list.innerHTML = studentsHtml;
+
+        initClickStudents();
       };
-
       renderStudents();
-
-      const studehtsElements = document.querySelectorAll("li");
-      for (const studehtsElement of studehtsElements) {
-        studehtsElement.addEventListener("click", () => {
-          console.log(click);
-        });
-      }
 
       button.addEventListener("click", () => {
         input.classList.remove("error");
@@ -56,8 +64,8 @@
           return;
         }
 
-        studehts.push({ name: input.value });
-
+        const newStudents = { name: input.value };
+        students.push(newStudents);
         renderStudents();
 
         // const oldHtml = list.innerHTML;
